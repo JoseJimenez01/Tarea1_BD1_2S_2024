@@ -4,4 +4,9 @@
 // Write your JavaScript code.
 
 
+function ObtenerColorDeFondo() {
+    document.getElementById('encId').style.backgroundColor = $("body").css("backgroundColor");
+    document.getElementById('encNom').style.backgroundColor = $("body").css("backgroundColor");
+    document.getElementById('encSal').style.backgroundColor = $("body").css("backgroundColor");
+}
 

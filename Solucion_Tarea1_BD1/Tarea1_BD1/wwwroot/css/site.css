@@ -21,3 +21,13 @@ body {
   margin-bottom: 60px;
 }
 
+#div-lista {
+    width: auto;
+    height: 700px;
+    overflow: auto
+}
+
+th {
+    position: sticky;
+    top: 0;
+}

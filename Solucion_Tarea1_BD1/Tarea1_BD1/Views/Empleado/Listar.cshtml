@@ -4,42 +4,48 @@
 @{
     ViewData["Title"] = "Empleados";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body onload="ObtenerColorDeFondo()">
+    <h1>Lista de Empleados</h1>
 
-<h1>Lista de Empleados</h1>
-
-<div>
-    <div style="width:auto;height:800px;overflow:auto">
-        <table class="table table-hover">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Salario)
-                </th>
-            </tr>
-            @foreach (var item in Model)
-            {
+    <div>
+        <div id="div-lista">
+            <table class="table table-hover">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Salario)
-                    </td>
+                    <th id="encId">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th id="encNom">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th id="encSal">
+                        @Html.DisplayNameFor(model => model.Salario)
+                    </th>
                 </tr>
-            }
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salario)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        @* Ve después si se arregla y se cambia por un botón en vez de dejar un link *@
+        @* <input type="submit" id="btnAgregar" class="btn btn-primary" value="Agregar" asp-controller="Empleado" asp-action="Agregar"/>
+        <button class="btn btn-primary" asp-area="" asp-controller="Empleado" asp-action="Agregar">Agregar</button> *@
+        @Html.ActionLink("Agregar", "Agregar", "Empleado")
     </div>
-    @* Ve después si se arregla y se cambia por un botón en vez de dejar un link *@
-    @* <input type="submit" id="btnAgregar" class="btn btn-primary" value="Agregar" asp-controller="Empleado" asp-action="Agregar"/>
-    <button class="btn btn-primary" asp-area="" asp-controller="Empleado" asp-action="Agregar">Agregar</button> *@
-    @Html.ActionLink("Agregar", "Agregar", "Empleado")
-</div>
-
+</body>
+</html>

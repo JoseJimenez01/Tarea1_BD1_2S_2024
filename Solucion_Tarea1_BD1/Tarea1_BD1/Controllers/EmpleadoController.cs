@@ -10,7 +10,7 @@ namespace Tarea1_BD1.Controllers
     public class EmpleadoController : Controller
     {
         public readonly Dbtarea1Context _dbContext;
-        private readonly ILogger<EmpleadoController> _logger;
+        //private readonly ILogger<EmpleadoController> _logger;
 
         public EmpleadoController(Dbtarea1Context _context)
         {
@@ -47,11 +47,6 @@ namespace Tarea1_BD1.Controllers
                     empleado.Nombre = reader.GetString(1);
                     empleado.Salario = reader.GetDecimal(2);
                     listaEmpleados.Add(empleado);
-
-                    //articulo.IdTipoArticuloNavigation.Nombre = reader.GetString(0);
-                    //articulo.Nombre = reader.GetString(1);
-                    //articulo.Precio = reader.GetDecimal(2);
-                    //listaArticulos.Add(articulo);
                 }
                 connection.Close();
                 reader.Close();
@@ -62,6 +57,12 @@ namespace Tarea1_BD1.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [Route("agregar-empleados")]
+        public IActionResult Agregar()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

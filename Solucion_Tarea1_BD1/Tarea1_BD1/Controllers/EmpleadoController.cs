@@ -59,7 +59,7 @@ namespace Tarea1_BD1.Controllers
             }
         }
 
-        [Route("agregar-empleados")]
+        [Route("agregar_empleados")]
         public IActionResult Agregar()
         {
             return View();

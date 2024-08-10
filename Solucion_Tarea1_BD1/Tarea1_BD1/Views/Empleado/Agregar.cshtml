@@ -5,12 +5,45 @@
     ViewData["Title"] = "Empleados";
 }
 
-<h1>Agregar Empleados</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<div id="div-agregar-usuario">
+</head>
+<body>
     <div>
-        <form>
+        <h1>
+            Agregar Empleados
+        </h1>
+        <div class="form-floating">
+            <form id="formAgregarEmpleado">
+                <div class="mt-5">
+                    <label for="entradaNombre">
+                        Nombre:
+                    </label>
+                    <input type="text" id="entNom" name="entradaNombre" class="form-control" placeholder="Escriba el nombre aquí">
+                </div>
 
-        </form>
+                <div class="mt-3">
+                    <label for="entradaSalario">
+                        Salario:
+                    </label>
+                    <input type="text" id="entSal" name="entradaSalario" class="form-control" placeholder="Escriba el salario aquí">
+                </div>
+
+                <div class="mt-3">
+                    <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()">
+                </div>
+
+                <div class="mt-3">
+                    <input type="submit" id="btnBack" class="btn btn-primary" value="Regresar" asp-controller="Empleado" asp-action="Listar">
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
+    <div id="div-alertas">
+
+    </div>
+</body>
+</html>

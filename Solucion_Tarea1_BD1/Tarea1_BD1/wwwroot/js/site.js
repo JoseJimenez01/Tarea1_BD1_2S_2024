@@ -3,10 +3,19 @@
 
 // Write your JavaScript code.
 
-
 function ObtenerColorDeFondo() {
     document.getElementById('encId').style.backgroundColor = $("body").css("backgroundColor");
     document.getElementById('encNom').style.backgroundColor = $("body").css("backgroundColor");
     document.getElementById('encSal').style.backgroundColor = $("body").css("backgroundColor");
 }
 
+function validarFormulario() {
+    var nombre = document.getElementById("entNom").value;
+    var salario = document.getElementById("entSal").value;
+    //console.log(nombre);
+    //console.log(salario);
+    //alert(nombre + salario);
+    if (nombre == "") {
+        alert("Nombre obligatorio");
+    }
+}

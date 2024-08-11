@@ -42,14 +42,10 @@
                 }
             </table>
         </div>
-        @* Ve después si se arregla y se cambia por un botón en vez de dejar un link *@
-        @* <input type="submit" id="btnAgregar" class="btn btn-primary" value="Agregar" asp-controller="Empleado" asp-action="Agregar"/>
-        <button class="btn btn-primary" asp-area="" asp-controller="Empleado" asp-action="Agregar">Agregar</button> *@
-        @Html.ActionLink("Agregar", "Agregar", "Empleado")
-        @* <div class="mt-3">
+        @* @Html.ActionLink("Agregar", "Agregar", "Empleado") *@
+        <form>
             <input type="submit" id="btnAgregar" class="btn btn-primary" value="Agregar" asp-controller="Empleado" asp-action="Agregar">
-            <button type="submit" id="btnAgregar" class="btn btn-primary" asp-controller="Empleado" asp-action="Agregar">Agregar</button>
-        </div> *@
+        </form>
     </div>
 </body>
 </html>

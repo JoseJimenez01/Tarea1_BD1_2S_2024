@@ -31,19 +31,36 @@
                     <input type="text" id="entSal" name="entradaSalario" class="form-control" placeholder="Escriba el salario aquí">
                 </div>
 
-                <div class="mt-3">
+                <div class="mt-3" id="div-botones">
                     <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()">
-                </div>
-
-                <div class="mt-3">
                     <input type="submit" id="btnBack" class="btn btn-primary" value="Regresar" asp-controller="Empleado" asp-action="Listar">
                 </div>
-
             </form>
         </div>
     </div>
     <div id="div-alertas">
+        <div id="div-alertas-contenido">
+            
+        </div>
+    </div>
 
+
+    @* Probando este codigo para hacer un popup de avisos *@
+    <div id="overlay"></div>
+
+    <div id="elPopup" class="contenedorPopup">
+        <div id="contenedorForm">
+
+            @*<span id="btnCerrarPopup" class="cerrar"> <strong> &times; </strong> </span>*@
+
+            <h3 id="tituloPopup">Aviso</h3>
+            <form id="idForm">
+                <label >
+
+                </label>
+                <button id="btnCerrarPopup"> Cerrar </button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

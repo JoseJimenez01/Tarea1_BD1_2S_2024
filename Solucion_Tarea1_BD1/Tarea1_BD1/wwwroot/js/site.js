@@ -3,47 +3,82 @@
 
 // Write your JavaScript code.
 
+//Constantes para hacer avisos
+const abrirPopup = document.getElementById('btnSubmit');
+const cerrarPopup = document.getElementById('btnCerrarPopup');
+const contenedorPopup = document.getElementById('elPopup');
+const taparContenido = document.getElementById('overlay');
+
+
+// Cambiar el color de los encabezados de la tabla al listar
 function ObtenerColorDeFondo() {
     document.getElementById('encId').style.backgroundColor = $("body").css("backgroundColor");
     document.getElementById('encNom').style.backgroundColor = $("body").css("backgroundColor");
     document.getElementById('encSal').style.backgroundColor = $("body").css("backgroundColor");
 }
 
+// Abrir el div para hacer avisos y muestra el aviso
+function avisos(mensaje) {
+    taparContenido.style.display = 'block';
+    contenedorPopup.style.display = 'flex';
+    document.getElementById('labelParaAviso').innerHTML = mensaje;
+}
+
+// Hace las validaciones en el formulario
 function validarFormulario() {
-    var nombre = document.getElementById("entNom").value;
-    var salario = document.getElementById("entSal").value;
+    let nombre = document.getElementById("entNom").value;
+    let salario = document.getElementById("entSal").value;
 
     let expresionRegularNombre = /[A-Za-z\ \-\xC1\xC9\xCD\xD3\xDA\xDC\xE1\xE9\xED\xF3\xFA\xFC\xD1\xF1]+/g;
     let expresionRegularSalario = /[\d]+\.{1}[\d]{2}/g;
 
     if (nombre == "") {
-        document.getElementById('labelParaAviso').innerHTML = "Debe digitar el nombre";
+        avisos("Debe digitar el nombre");
+        return;
     //La doble validación es necesaria
     } else if (expresionRegularNombre.test(nombre) === false || !(nombre.match(expresionRegularNombre) == nombre)) {
-        document.getElementById('labelParaAviso').innerHTML = "El nombre solo puede incluir letras, espacios o guiones";
+        avisos("El nombre solo puede incluir letras, espacios o guiones");
+        return;
     } else if (salario == "") {
-        document.getElementById('labelParaAviso').innerHTML = "Debe digitar el salario";
+        avisos("Debe digitar el salario");
+        return;
     //La doble validación es necesaria
     } else if (expresionRegularSalario.test(salario) === false || !(salario.match(expresionRegularSalario) == salario)) {
-        //alert("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios.");
-        document.getElementById('labelParaAviso').innerHTML = "El salario solo puede usar el punto como separador decimal y dos decimales obligatorios";
+        avisos("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios");
+        return;
     }
-    while(true) {
-        if (contenedorPopup.style.display === 'flex') {
-            continue;
+    let agregado = false;
+    $.ajax({
+        url: '@Url.Action("IngresarEmpleadoEnBD", "Empleado)',
+        method: 'GET',
+        /*data: { nombreForm: nombre, salarioForm: salario },*/
+        data: jQuery.param({nombreForm: nombre, salarioForm: salario}),
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        success: function (response) {
+            if (response.mensaje == "Empleado agregado exitosamente") {
+                agregado = true;
+                avisos("Empleado agregado exitosamente");
+            } else if (response.mensaje == "El empleado ya existe en la base de datos") {
+                avisos("El empleado ya existe en la base de datos");
+            } else {
+                avisos(response.mensaje);
+            }
+        },
+        error: function (xhr, status, error) {
+            avisos("Error al enviar el formulario. El error es el siguiente: " + error.toString());
         }
+    });
+
+    if (agregado == true) {
+        $.ajax({
+            url: '@Url.Action("Listar", "Empleado)',
+            method: 'GET',
+            error: function (xhr, status, error) {
+                avisos("Error al volver a la lista de empleados. El error es el siguiente: " + error);
+            }
+        });
     }
-    
 }
-
-/*
-    Desde aqui el JS para el popup de avisos
-*/
-
-const abrirPopup = document.getElementById('btnSubmit');
-const cerrarPopup = document.getElementById('btnCerrarPopup');
-const contenedorPopup = document.getElementById('elPopup');
-const taparContenido = document.getElementById('overlay');
 
 // Funciones para abrir y cerrar el popup
 function showPopup() {
@@ -57,7 +92,7 @@ function hidePopup() {
 }
 
 // Event listeners para abrir y cerrar el popup
-abrirPopup.addEventListener('click', showPopup);
+/*abrirPopup.addEventListener('click', showPopup);*/
 cerrarPopup.addEventListener('click', hidePopup);
 
 document.addEventListener('click', function (event) {
@@ -66,7 +101,3 @@ document.addEventListener('click', function (event) {
         hidePopup();
     }
 });
-
-/*
-    Hasta aqui el JS para el popup de avisos
-*/

@@ -32,34 +32,24 @@
                 </div>
 
                 <div class="mt-3" id="div-botones">
-                    <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()">
+                    @* <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()"> *@
+                    @* Se puede quitar la propiedad onclick="btnSubmit_Click" y quita el refresco despues de la pagina del todo*@
+                    <asp:button type="submit" id="btnSubmit" class="btn btn-primary" onclick="validarFormulario()">Insertar</asp:button>
                     <input type="submit" id="btnBack" class="btn btn-primary" value="Regresar" asp-controller="Empleado" asp-action="Listar">
-                </div>
+                    @* <asp:button type="submit" id="btnBack" class="btn btn-primary" asp-controller="Empleado" asp-action="Listar">Regresar</asp:button> *@
             </form>
         </div>
     </div>
-    <div id="div-alertas">
-        <div id="div-alertas-contenido">
-            
-        </div>
-    </div>
-
-
-    @* Probando este codigo para hacer un popup de avisos *@
+    
     <div id="overlay"></div>
 
     <div id="elPopup" class="contenedorPopup">
         <div id="contenedorForm">
 
-            @*<span id="btnCerrarPopup" class="cerrar"> <strong> &times; </strong> </span>*@
+            <h5 id="tituloPopup">Aviso</h5>
+            <label id="labelParaAviso"></label>
+            <button id="btnCerrarPopup" onclick="showPopup()">X</button>
 
-            <h3 id="tituloPopup">Aviso</h3>
-            <form id="idForm">
-                <label >
-
-                </label>
-                <button id="btnCerrarPopup"> Cerrar </button>
-            </form>
         </div>
     </div>
 </body>

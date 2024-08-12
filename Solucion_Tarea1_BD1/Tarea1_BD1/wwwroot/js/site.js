@@ -17,21 +17,23 @@ function validarFormulario() {
     let expresionRegularSalario = /[\d]+\.{1}[\d]{2}/g;
 
     if (nombre == "") {
-        //alert("Debe digitar el nombre.");
-
+        document.getElementById('labelParaAviso').innerHTML = "Debe digitar el nombre";
     //La doble validación es necesaria
     } else if (expresionRegularNombre.test(nombre) === false || !(nombre.match(expresionRegularNombre) == nombre)) {
-        alert("El nombre solo puede incluir letras, espacios o guiones.");
+        document.getElementById('labelParaAviso').innerHTML = "El nombre solo puede incluir letras, espacios o guiones";
     } else if (salario == "") {
-        alert("Debe digitar el salario.");
-        //La doble validación es necesaria
+        document.getElementById('labelParaAviso').innerHTML = "Debe digitar el salario";
+    //La doble validación es necesaria
     } else if (expresionRegularSalario.test(salario) === false || !(salario.match(expresionRegularSalario) == salario)) {
-        alert("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios.");
+        //alert("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios.");
+        document.getElementById('labelParaAviso').innerHTML = "El salario solo puede usar el punto como separador decimal y dos decimales obligatorios";
     }
-}
-
-function cerrarDivAvisos() {
-
+    while(true) {
+        if (contenedorPopup.style.display === 'flex') {
+            continue;
+        }
+    }
+    
 }
 
 /*
@@ -43,11 +45,10 @@ const cerrarPopup = document.getElementById('btnCerrarPopup');
 const contenedorPopup = document.getElementById('elPopup');
 const taparContenido = document.getElementById('overlay');
 
-
 // Funciones para abrir y cerrar el popup
 function showPopup() {
     taparContenido.style.display = 'block';
-    contenedorPopup.style.display = 'block';
+    contenedorPopup.style.display = 'flex';
 }
 
 function hidePopup() {

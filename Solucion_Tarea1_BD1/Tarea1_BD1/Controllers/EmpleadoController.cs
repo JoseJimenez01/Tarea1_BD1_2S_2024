@@ -36,22 +36,71 @@ namespace Tarea1_BD1.Controllers
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
                 comando.CommandText = "SP_ListarEmpleados";
                 //si se ocupan parametros se le agregan con los siguiente
-                comando.Parameters.Add("@outMessage", System.Data.SqlDbType.VarChar, 128).Value = "";
-                comando.Parameters.Add("@outResult", System.Data.SqlDbType.Int, 1).Value = 0;
+                comando.Parameters.Add("@outMessage", System.Data.SqlDbType.VarChar, 128).Value = "nombrePrueba";
+                comando.Parameters.Add("@outResult", System.Data.SqlDbType.Int, 1).Value = -5678;
 
                 SqlDataReader reader = comando.ExecuteReader();
                 List<Models.Empleado> listaEmpleados = new List<Models.Empleado>();
 
                 while (reader.Read())
                 {
+                    //Empleado empleado = new Empleado();
+                    //empleado.Id = reader.GetInt32(0);
+                    //empleado.Nombre = reader.GetString(1);
+                    //empleado.Salario = reader.GetDecimal(2);
+                    //listaEmpleados.Add(empleado);
                     Empleado empleado = new Empleado();
-                    empleado.Id = reader.GetInt32(0);
-                    empleado.Nombre = reader.GetString(1);
-                    empleado.Salario = reader.GetDecimal(2);
+                    empleado.Id = Convert.ToInt16(reader["id"]);
+                    empleado.Nombre = Convert.ToString(reader["Nombre"]);
+                    empleado.Salario = Convert.ToDecimal(reader["Salario"]);
                     listaEmpleados.Add(empleado);
                 }
+
+                //Probando que se lea correctamente el sp desde aqui
+                //reader.NextResult();
+
+                //int contractID = Convert.ToInt32(cmd.Parameters["@NewId"].Value);
+
+                //string SPmessage = comando.Parameters["@outMessage"].Value.ToString();
+                //string SPmessage = comando.Parameters["@outMessage"].Value.ToString();
+                ////string SPmessage = (reader["@outMessage"]).ToString();
+                //string SPresult = comando.Parameters["@outResult"].Value.ToString();
+                ////string SPresult = Convert.ToString(reader["@outResult"]);
+                //Empleado empleado1 = new Empleado();
+                //empleado1.Id = Int32.Parse(SPresult);
+                //empleado1.Nombre = SPmessage;
+                //Console.WriteLine("El mensaje de salida del sp es: " + SPmessage);
+                //empleado1.Salario = -1000;
+                //listaEmpleados.Add(empleado1);
+
                 connection.Close();
                 reader.Close();
+
+                //Probando que se lea correctamente el sp desde aqui
+                //reader.NextResult();
+                //string SPmessage = comando.Parameters["@outMessage"].Value.ToString();
+                //string SPresult = comando.Parameters["@outResult"].Value.ToString();
+                //Empleado empleado1 = new Empleado();
+                //empleado1.Id = Int32.Parse(SPresult);
+                //empleado1.Nombre = SPmessage;
+                //Console.WriteLine("El mensaje de salida del sp es: " + SPmessage);
+                //empleado1.Salario = -1000;
+                //listaEmpleados.Add(empleado1);
+                connection.Open();
+                comando.ExecuteNonQuery();
+                //string SPmessage = comando.Parameters["@outMessage"].Value.ToString();
+                string SPmessage = comando.Parameters["@outMessage"].Value.ToString()!;
+                string SPresult = comando.Parameters["@outResult"].Value.ToString()!;
+                Empleado empleado1 = new Empleado();
+                empleado1.Id = Int32.Parse(SPresult);
+                empleado1.Nombre = SPmessage;
+                //empleado1.Nombre = comando.Parameters["@outMessage"].Value.ToString();
+                Console.WriteLine("El mensaje de salida del sp es: " + SPmessage);
+                Console.WriteLine("El codigo de salida del sp es: " + SPresult);
+                empleado1.Salario = -1000;
+                listaEmpleados.Add(empleado1);
+                connection.Close();
+
 
                 return View(listaEmpleados);
             }

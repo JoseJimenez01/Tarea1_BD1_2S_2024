@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<Tarea1_BD1.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body onload="ObtenerColorDeFondo()">
+    <h1>Lista de Empleados</h1>
+
+    <div>
+        <div id="div-lista">
+            <table class="table table-hover">
+                <tr>
+                    <th id="encId">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th id="encNom">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th id="encSal">
+                        @Html.DisplayNameFor(model => model.Salario)
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salario)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        @* @Html.ActionLink("Agregar", "Agregar", "Empleado") *@
+        <form>
+            <input type="submit" id="btnAgregar" class="btn btn-primary" value="Agregar" asp-controller="Empleado" asp-action="Agregar">
+        </form>
+    </div>
+</body>
+</html>

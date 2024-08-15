@@ -1,0 +1,83 @@
+﻿
+@model IEnumerable<Tarea1_BD1.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <div>
+        <h1>
+            Agregar Empleados
+        </h1>
+        <div class="form-floating">
+            @* <form id="formAgregarEmpleado">
+                <div class="mt-5">
+                    <label for="entradaNombre">
+                        Nombre:
+                    </label>
+                    <input type="text" id="entNom" name="entradaNombre" class="form-control" placeholder="Escriba el nombre aquí">
+                </div>
+
+                <div class="mt-3">
+                    <label for="entradaSalario">
+                        Salario:
+                    </label>
+                    <input type="text" id="entSal" name="entradaSalario" class="form-control" placeholder="Escriba el salario aquí">
+                </div>
+
+                <div class="mt-3" id="div-botones">
+                    <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()"> linea estaba comentada
+                    Se puede quitar la propiedad onclick="btnSubmit_Click" y quita el refresco despues de la pagina del todo    linea estaba comentada
+                    <asp:button type="submit" id="btnSubmit" class="btn btn-primary" OnClick="validarFormulario()">Insertar</asp:button>
+                    <input type="submit" id="btnBack" class="btn btn-primary" value="Regresar" asp-controller="Empleado" asp-action="Listar"> linea estaba comentada
+                    <asp:button type="submit" id="btnBack" class="btn btn-primary" asp-controller="Empleado" asp-action="Listar">Regresar</asp:button>
+                </div>
+            </form> *@
+            @* Probando con un form de .net *@
+            @using (Html.BeginForm("IngresarEmpleadoEnBD", "Empleado", FormMethod.Post))
+            {
+                <div class="mt-5">
+                    <label for="entradaNombre">
+                        Nombre:
+                    </label>
+                    <input type="text" id="entNom" name="entradaNombre" class="form-control" placeholder="Escriba el nombre aquí">
+                </div>
+
+                <div class="mt-3">
+                    <label for="entradaSalario">
+                        Salario:
+                    </label>
+                    <input type="text" id="entSal" name="entradaSalario" class="form-control" placeholder="Escriba el salario aquí">
+                </div>
+
+                <div class="mt-3" id="div-botones">
+                    @* <input type="submit" id="btnSubmit" class="btn btn-primary" value="Insertar" onclick="validarFormulario()"> *@
+                    @* Se puede quitar la propiedad onclick="btnSubmit_Click" y quita el refresco despues de la pagina del todo*@
+                    <asp:button type="submit" id="btnSubmit" class="btn btn-primary" OnClick="validarFormulario()" @* OnClientClick="this.form.submit();" *@>Insertar</asp:button>
+                    <input type="submit" id="btnBack" class="btn btn-primary" value="Regresar" asp-controller="Empleado" asp-action="Listar">
+                    @* <asp:button type="submit" id="btnBack" class="btn btn-primary" asp-controller="Empleado" asp-action="Listar">Regresar</asp:button> *@
+                </div>
+            }
+            |
+        </div>
+    </div>
+    
+    <div id="overlay" class="class-overlay"></div>
+
+    <div id="elPopup" class="contenedorPopup">
+        <div id="contenedorForm">
+
+            <h5 id="tituloPopup">Aviso</h5>
+            <label id="labelParaAviso"></label>
+            <button id="btnCerrarPopup" onclick="showPopup()">X</button>
+
+        </div>
+    </div>
+</body>
+</html>

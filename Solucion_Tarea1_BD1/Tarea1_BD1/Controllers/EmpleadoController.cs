@@ -17,7 +17,7 @@ namespace Tarea1_BD1.Controllers
         {
             _dbContext = _context;
         }
-
+        
         [HttpGet]
         public IActionResult Listar()
         {
@@ -70,7 +70,6 @@ namespace Tarea1_BD1.Controllers
                 Console.WriteLine(" El codigo de salida del sp es: " + comando.Parameters["@outResult"].Value.ToString()!);
                 Console.WriteLine("-----------------------------------------------------------------------------\n");
                 connection.Close();
-
                 return View(listaEmpleados);
             }
             catch (Exception ex)
@@ -152,7 +151,7 @@ namespace Tarea1_BD1.Controllers
                 connection.Close();
 
                 connection.Close();
-
+                
                 if (SPmessage == "El empleado ya existe" || SPresult == "1")
                 {
                     return Json(new {mensaje = "El empleado ya existe en la base de datos" });

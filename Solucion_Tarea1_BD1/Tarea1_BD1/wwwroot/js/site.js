@@ -1,8 +1,4 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 //Constantes para hacer avisos
 const abrirPopup = document.getElementById('btnSubmit');
 const cerrarPopup = document.getElementById('btnCerrarPopup');
@@ -34,18 +30,18 @@ function validarFormulario() {
 
     if (nombre == "") {
         avisos("Debe digitar el nombre");
-        return;
+        return false;
     //La doble validación es necesaria
     } else if (expresionRegularNombre.test(nombre) === false || !(nombre.match(expresionRegularNombre) == nombre)) {
         avisos("El nombre solo puede incluir letras, espacios o guiones");
-        return;
+        return false;
     } else if (salario == "") {
         avisos("Debe digitar el salario");
-        return;
+        return false;
     //La doble validación es necesaria
     } else if (expresionRegularSalario.test(salario) === false || !(salario.match(expresionRegularSalario) == salario)) {
         avisos("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios");
-        return;
+        return false;
     }
 }
 

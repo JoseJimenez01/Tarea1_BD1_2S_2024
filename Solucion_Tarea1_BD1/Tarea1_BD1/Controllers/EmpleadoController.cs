@@ -78,15 +78,33 @@ namespace Tarea1_BD1.Controllers
             }
         }
 
-        [Route("agregar_empleados")]
-        public IActionResult Agregar()
+        //[Route("agregar_empleados")]
+        //public IActionResult Agregar()
+        //{
+        //    return View();
+        //}
+
+        [Route("agregar_empleadosDEPRUEBA")]
+        public IActionResult Agregar(Empleado modeloDeEmpleado)
         {
-            return View();
+            if(modeloDeEmpleado == null)
+                modeloDeEmpleado = new Empleado();
+            return View(modeloDeEmpleado);
         }
 
         [HttpPost]
-        //public IActionResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm )
-        public JsonResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm)
+        public ActionResult ValidarDataAnnotations(Empleado modeloDeEmpleado) { 
+            if(!ModelState.IsValid)
+            {
+                return RedirectToAction("Agregar", modeloDeEmpleado);
+                //return RedirectToAction("Listar");
+            }
+            //IngresarEmpleadoEnBD();
+            return RedirectToAction("Listar");
+        }
+        
+        [HttpPost]
+        public IActionResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm )
         {
             try
             {

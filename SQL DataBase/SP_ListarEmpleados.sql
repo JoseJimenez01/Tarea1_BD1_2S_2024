@@ -22,17 +22,12 @@ BEGIN
 
 		SET @outResult = 0
 		SET @outMessage = 'Empleados listados exitosamente.'
-		--Agregada esta linea para probar la lectura de los mismos
-		--SELECT @outMessage, @outResult
 
 		SET NOCOUNT OFF;
 	END TRY
 	BEGIN CATCH
 		SET @outResult = 50005
 		SET @outMessage = ERROR_MESSAGE()
-		--Agregada esta linea para probar la lectura de los mismos
-		--SELECT @outMessage, @outResult
-
 		SET NOCOUNT OFF;
 	END CATCH
 END

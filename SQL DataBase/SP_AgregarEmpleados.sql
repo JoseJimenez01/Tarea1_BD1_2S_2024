@@ -30,7 +30,7 @@ BEGIN
 		VALUES(
 			@inNombre
 			, @inSalario
-		)
+		);
 		SET @outResult = 0
 		SET @outMessage = 'Empleados agregados exitosamente.'
 

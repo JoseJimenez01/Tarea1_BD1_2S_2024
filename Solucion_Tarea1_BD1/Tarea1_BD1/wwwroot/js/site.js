@@ -47,37 +47,6 @@ function validarFormulario() {
         avisos("El salario solo puede usar el punto como separador decimal y dos decimales obligatorios");
         return;
     }
-    let agregado = false;
-    $.ajax({
-        url: '@Url.Action("IngresarEmpleadoEnBD", "Empleado)',
-        method: 'GET',
-        /*data: { nombreForm: nombre, salarioForm: salario },*/
-        data: jQuery.param({nombreForm: nombre, salarioForm: salario}),
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        success: function (response) {
-            if (response.mensaje == "Empleado agregado exitosamente") {
-                agregado = true;
-                avisos("Empleado agregado exitosamente");
-            } else if (response.mensaje == "El empleado ya existe en la base de datos") {
-                avisos("El empleado ya existe en la base de datos");
-            } else {
-                avisos(response.mensaje);
-            }
-        },
-        error: function (xhr, status, error) {
-            avisos("Error al enviar el formulario. El error es el siguiente: " + error.toString());
-        }
-    });
-
-    if (agregado == true) {
-        $.ajax({
-            url: '@Url.Action("Listar", "Empleado)',
-            method: 'GET',
-            error: function (xhr, status, error) {
-                avisos("Error al volver a la lista de empleados. El error es el siguiente: " + error);
-            }
-        });
-    }
 }
 
 // Funciones para abrir y cerrar el popup

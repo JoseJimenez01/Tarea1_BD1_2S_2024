@@ -1,5 +1,6 @@
 ﻿
-@model IEnumerable<Tarea1_BD1.Models.Empleado>
+@* @model IEnumerable<Tarea1_BD1.Models.Empleado> *@
+@model Empleado
 
 @{
     ViewData["Title"] = "Empleados";
@@ -21,7 +22,8 @@
                     <label for="entradaNombre">
                         Nombre:
                     </label>
-                    <input type="text" id="entNom" name="entradaNombre" class="form-control" placeholder="Escriba el nombre aquí">
+                    <input type="text" asp-for="Nombre" id="entNom" name="entradaNombre" class="form-control" placeholder="Escriba el nombre aquí">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
 
                 <div class="mt-3">

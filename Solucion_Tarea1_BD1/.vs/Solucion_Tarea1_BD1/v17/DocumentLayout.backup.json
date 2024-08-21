@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|c:\\users\\usuario\\onedrive\\escritorio\\material_y_evaluaciones_de_cursos\\2 s 2024\\bases de datos 1\\tarea 1\\tarea1_bd1_2s_2024\\solucion_tarea1_bd1\\tarea1_bd1\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|solutionrelative:tarea1_bd1\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|c:\\users\\usuario\\onedrive\\escritorio\\material_y_evaluaciones_de_cursos\\2 s 2024\\bases de datos 1\\tarea 1\\tarea1_bd1_2s_2024\\solucion_tarea1_bd1\\tarea1_bd1\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|solutionrelative:tarea1_bd1\\controllers\\empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|c:\\users\\usuario\\onedrive\\escritorio\\material_y_evaluaciones_de_cursos\\2 s 2024\\bases de datos 1\\tarea 1\\tarea1_bd1_2s_2024\\solucion_tarea1_bd1\\tarea1_bd1\\views\\empleado\\agregar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|solutionrelative:tarea1_bd1\\views\\empleado\\agregar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|c:\\users\\usuario\\onedrive\\escritorio\\material_y_evaluaciones_de_cursos\\2 s 2024\\bases de datos 1\\tarea 1\\tarea1_bd1_2s_2024\\solucion_tarea1_bd1\\tarea1_bd1\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|solutionrelative:tarea1_bd1\\models\\empleado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2BAE6CC5-62C7-43F5-89CC-22AF53F519C5}|Tarea1_BD1\\Tarea1_BD1.csproj|c:\\users\\usuario\\onedrive\\escritorio\\material_y_evaluaciones_de_cursos\\2 s 2024\\bases de datos 1\\tarea 1\\tarea1_bd1_2s_2024\\solucion_tarea1_bd1\\tarea1_bd1\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Agregar.cshtml",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\Tarea1_BD1\\Views\\Empleado\\Agregar.cshtml",
               "RelativeDocumentMoniker": "Tarea1_BD1\\Views\\Empleado\\Agregar.cshtml",
@@ -86,11 +86,12 @@
               "RelativeToolTip": "Tarea1_BD1\\Views\\Empleado\\Agregar.cshtml",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T19:31:14.2Z"
+              "WhenOpened": "2024-08-10T19:31:14.2Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Listar.cshtml",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\Tarea1_BD1\\Views\\Empleado\\Listar.cshtml",
               "RelativeDocumentMoniker": "Tarea1_BD1\\Views\\Empleado\\Listar.cshtml",
@@ -98,11 +99,12 @@
               "RelativeToolTip": "Tarea1_BD1\\Views\\Empleado\\Listar.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-09T00:30:37.911Z"
+              "WhenOpened": "2024-08-09T00:30:37.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "EmpleadoController.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\Tarea1_BD1\\Controllers\\EmpleadoController.cs",
               "RelativeDocumentMoniker": "Tarea1_BD1\\Controllers\\EmpleadoController.cs",
@@ -115,16 +117,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Empleado.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\Tarea1_BD1\\Models\\Empleado.cs",
               "RelativeDocumentMoniker": "Tarea1_BD1\\Models\\Empleado.cs",
               "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\Material_y_evaluaciones_de_cursos\\2 S 2024\\Bases de Datos 1\\Tarea 1\\Tarea1_BD1_2S_2024\\Solucion_Tarea1_BD1\\Tarea1_BD1\\Models\\Empleado.cs",
               "RelativeToolTip": "Tarea1_BD1\\Models\\Empleado.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T05:37:23.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-14T05:37:23.358Z"
             }
           ]
         }

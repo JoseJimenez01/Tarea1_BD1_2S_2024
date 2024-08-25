@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Data;
 using System.Diagnostics;
+using System.Runtime.InteropServices.JavaScript;
 using Tarea1_BD1.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -78,33 +82,43 @@ namespace Tarea1_BD1.Controllers
             }
         }
 
-        //[Route("agregar_empleados")]
-        //public IActionResult Agregar()
-        //{
-        //    return View();
-        //}
-
-        [Route("agregar_empleadosDEPRUEBA")]
-        public IActionResult Agregar(Empleado modeloDeEmpleado)
+        [HttpGet]
+        [Route("agregar_empleados")]
+        public ActionResult Agregar()
         {
-            if(modeloDeEmpleado == null)
-                modeloDeEmpleado = new Empleado();
-            return View(modeloDeEmpleado);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult ValidarDataAnnotations(Empleado modeloDeEmpleado) { 
-            if(!ModelState.IsValid)
+        public IActionResult ValidarDataAnnotations(Empleado empleado)
+        {
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Agregar", modeloDeEmpleado);
-                //return RedirectToAction("Listar");
+                string json = IngresarEmpleadoEnBD(empleado.Nombre, empleado.Salario);
+                dynamic mensaje = JsonConvert.DeserializeObject(json);
+                if (mensaje["mensaje"].ToString() == "El empleado ya existe en la base de datos")
+                {
+                    return HacerAviso("Agregar", "Nombre de empleado ya existe", empleado);
+                }else if (mensaje["mensaje"].ToString() == "Empleado agregado exitosamente")
+                {
+                    return HacerAviso("Listar", "Inserción exitosa", empleado);
+                }
             }
-            //IngresarEmpleadoEnBD();
-            return RedirectToAction("Listar");
+            return HacerAviso("Listar", "No debería de poder verse este mensaje.", empleado);
         }
-        
+
+        public ActionResult HacerAviso(string nombreVista, string aviso, Empleado modelo)
+        {
+            TempData["Message"] = aviso;
+            if(nombreVista == "Listar")
+            {
+                return RedirectToAction(nombreVista);
+            }
+            return RedirectToAction(nombreVista, modelo);
+        }
+
         [HttpPost]
-        public IActionResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm )
+        public string IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm)
         {
             try
             {
@@ -172,18 +186,21 @@ namespace Tarea1_BD1.Controllers
 
                 if (SPmessage == "El empleado ya existe" || SPresult == "1")
                 {
-                    return Json(new { mensaje = "El empleado ya existe en la base de datos" });
+                    return @"{ 'mensaje': 'El empleado ya existe en la base de datos' }";
+                    //return "El empleado ya existe en la base de datos";
+
                 }
                 else if (SPmessage == "Empleados agregados exitosamente." || SPresult == "0")
                 {
-                    return Json(new { mensaje = "Empleado agregado exitosamente" });
+                    return @"{ 'mensaje': 'Empleado agregado exitosamente' }";
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { mensaje = ex.Message });
+                //string error = ex.Message;
+                //return @"{ 'mensaje': 'error' }";
             }
-            return Json(new { mensaje = "Hubo algun error inesperado" });
+            return @"{ 'mensaje': 'Hubo algun error inesperado'}";
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

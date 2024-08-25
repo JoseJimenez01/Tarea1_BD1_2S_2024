@@ -26,8 +26,30 @@ BEGIN
 		SET NOCOUNT OFF;
 	END TRY
 	BEGIN CATCH
+
+		INSERT INTO dbo.DBErrors
+		(
+			ErrorNumber
+			, ErrorState
+			, ErrorSeverity
+			, ErrorLine
+			, ErrorProcedure
+			, ErrorMessage
+			, ErrorDateTime
+		)
+		VALUES 
+		(
+			ERROR_NUMBER()
+			, ERROR_STATE()
+			, ERROR_SEVERITY()
+			, ERROR_LINE()
+			, ERROR_PROCEDURE()
+			, ERROR_MESSAGE()
+			, GETDATE()
+		)
 		SET @outResult = 50005
 		SET @outMessage = ERROR_MESSAGE()
+
 
 		SET NOCOUNT OFF;
 	END CATCH

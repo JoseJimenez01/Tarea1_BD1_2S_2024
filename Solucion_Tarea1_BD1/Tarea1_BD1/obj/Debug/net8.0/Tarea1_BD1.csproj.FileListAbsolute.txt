@@ -135,3 +135,4 @@ C:\Users\Usuario\OneDrive\Escritorio\Material_y_evaluaciones_de_cursos\2 S 2024\
 C:\Users\Usuario\OneDrive\Escritorio\Material_y_evaluaciones_de_cursos\2 S 2024\Bases de Datos 1\Tarea 1\Tarea1_BD1_2S_2024\Solucion_Tarea1_BD1\Tarea1_BD1\obj\Debug\net8.0\Tarea1_BD1.pdb
 C:\Users\Usuario\OneDrive\Escritorio\Material_y_evaluaciones_de_cursos\2 S 2024\Bases de Datos 1\Tarea 1\Tarea1_BD1_2S_2024\Solucion_Tarea1_BD1\Tarea1_BD1\obj\Debug\net8.0\Tarea1_BD1.genruntimeconfig.cache
 C:\Users\Usuario\OneDrive\Escritorio\Material_y_evaluaciones_de_cursos\2 S 2024\Bases de Datos 1\Tarea 1\Tarea1_BD1_2S_2024\Solucion_Tarea1_BD1\Tarea1_BD1\obj\Debug\net8.0\ref\Tarea1_BD1.dll
+C:\Users\Usuario\OneDrive\Escritorio\Material_y_evaluaciones_de_cursos\2 S 2024\Bases de Datos 1\Tarea 1\Tarea1_BD1_2S_2024\Solucion_Tarea1_BD1\Tarea1_BD1\bin\Debug\net8.0\Newtonsoft.Json.dll

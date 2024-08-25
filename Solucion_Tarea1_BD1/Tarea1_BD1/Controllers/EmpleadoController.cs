@@ -1,14 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Data;
 using System.Diagnostics;
+using System.Runtime.InteropServices.JavaScript;
 using Tarea1_BD1.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Tarea1_BD1.Controllers
 {
-    
+
     public class EmpleadoController : Controller
     {
         public readonly Dbtarea1Context _dbContext;
@@ -17,7 +21,7 @@ namespace Tarea1_BD1.Controllers
         {
             _dbContext = _context;
         }
-        
+
         [HttpGet]
         public IActionResult Listar()
         {
@@ -62,7 +66,7 @@ namespace Tarea1_BD1.Controllers
                     listaEmpleados.Add(empleado);
                 }
                 reader.Close();
-                
+
                 //Se leen los parámetros de salida
                 comando.ExecuteNonQuery();
                 Console.WriteLine("\n------------------- SE HA EJECUTADO EL SP_LISTAREMPLEADOS -------------------");
@@ -78,15 +82,43 @@ namespace Tarea1_BD1.Controllers
             }
         }
 
+        [HttpGet]
         [Route("agregar_empleados")]
-        public IActionResult Agregar()
+        public ActionResult Agregar()
         {
             return View();
         }
 
         [HttpPost]
-        //public IActionResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm )
-        public JsonResult IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm)
+        public IActionResult ValidarDataAnnotations(Empleado empleado)
+        {
+            if (ModelState.IsValid)
+            {
+                string json = IngresarEmpleadoEnBD(empleado.Nombre, empleado.Salario);
+                dynamic mensaje = JsonConvert.DeserializeObject(json);
+                if (mensaje["mensaje"].ToString() == "El empleado ya existe en la base de datos")
+                {
+                    return HacerAviso("Agregar", "Nombre de empleado ya existe", empleado);
+                }else if (mensaje["mensaje"].ToString() == "Empleado agregado exitosamente")
+                {
+                    return HacerAviso("Listar", "Inserción exitosa", empleado);
+                }
+            }
+            return HacerAviso("Listar", "No debería de poder verse este mensaje.", empleado);
+        }
+
+        public ActionResult HacerAviso(string nombreVista, string aviso, Empleado modelo)
+        {
+            TempData["Message"] = aviso;
+            if(nombreVista == "Listar")
+            {
+                return RedirectToAction(nombreVista);
+            }
+            return RedirectToAction(nombreVista, modelo);
+        }
+
+        [HttpPost]
+        public string IngresarEmpleadoEnBD(string nombreForm, Decimal salarioForm)
         {
             try
             {
@@ -148,24 +180,26 @@ namespace Tarea1_BD1.Controllers
                 Console.WriteLine(" El mensaje de salida del sp es: " + comando.Parameters["@outMessage"].Value.ToString()!);
                 Console.WriteLine(" El codigo de salida del sp es: " + comando.Parameters["@outResult"].Value.ToString()!);
                 Console.WriteLine("-----------------------------------------------------------------------------\n");
-                connection.Close();
 
                 connection.Close();
-                
+
                 if (SPmessage == "El empleado ya existe" || SPresult == "1")
                 {
-                    return Json(new {mensaje = "El empleado ya existe en la base de datos" });
+                    return @"{ 'mensaje': 'El empleado ya existe en la base de datos' }";
+                    //return "El empleado ya existe en la base de datos";
+
                 }
                 else if (SPmessage == "Empleados agregados exitosamente." || SPresult == "0")
                 {
-                    return Json(new {mensaje = "Empleado agregado exitosamente"});
+                    return @"{ 'mensaje': 'Empleado agregado exitosamente' }";
                 }
             }
             catch (Exception ex)
             {
-                return Json(new {mensaje = ex.Message});
+                //string error = ex.Message;
+                //return @"{ 'mensaje': 'error' }";
             }
-            return Json(new {mensaje = "Hubo algun error inesperado"});
+            return @"{ 'mensaje': 'Hubo algun error inesperado'}";
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

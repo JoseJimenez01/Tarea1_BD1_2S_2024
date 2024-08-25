@@ -180,7 +180,6 @@ namespace Tarea1_BD1.Controllers
                 Console.WriteLine(" El mensaje de salida del sp es: " + comando.Parameters["@outMessage"].Value.ToString()!);
                 Console.WriteLine(" El codigo de salida del sp es: " + comando.Parameters["@outResult"].Value.ToString()!);
                 Console.WriteLine("-----------------------------------------------------------------------------\n");
-                connection.Close();
 
                 connection.Close();
 

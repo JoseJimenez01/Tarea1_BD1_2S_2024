@@ -32,7 +32,8 @@ BEGIN
 		VALUES(
 			@inNombre
 			, @inSalario
-		)
+		);
+    
 		--Se guardan los valores de salida del SP
 		SET @outResult = 0
 		SET @outMessage = 'Empleados agregados exitosamente.'
@@ -41,7 +42,7 @@ BEGIN
 	END TRY
 	BEGIN CATCH
 		
-		--En caso de que existan errores, se guardan la información en una tabla
+		--En caso de que existan errores, se guardan la informaciï¿½n en una tabla
 		INSERT INTO dbo.DBErrors
 		(
 			ErrorNumber
@@ -61,7 +62,7 @@ BEGIN
 			, ERROR_PROCEDURE()
 			, ERROR_MESSAGE()
 			, GETDATE()
-		)
+		);
 
 		--Se guardan los valores de salida del SP
 		SET @outResult = 50005
